@@ -1,5 +1,6 @@
 # EX-NO14-HASH-ALGORITHM
-
+# NAME : DILLIGANESAN K
+# REG NO : 212224100014
 ## AIM:
 To implement HASH ALGORITHM
 
@@ -27,9 +28,53 @@ To implement HASH ALGORITHM
 
 
 ## Program:
+```
+#include <stdio.h>
+#include <string.h>
+
+void computeSimpleHash(const char *message, unsigned char *hash) {
+    unsigned char temp = 0;
+
+    for (int i = 0; message[i] != '\0'; i++) {
+        temp = temp ^ message[i]; 
+        temp += message[i];       
+    }
+    
+    *hash = temp;
+}
+
+int main() {
+    char message[256];     
+    unsigned char hash;     
+    char receivedHash[3];  
+
+    printf("Enter the message: ");
+    scanf("%s", message);
+
+    computeSimpleHash(message, &hash);
+
+    printf("Computed Hash (in hex): %02x\n", hash);
+
+    printf("Enter the received hash (in hex): ");
+    scanf("%s", receivedHash);
+
+    unsigned int receivedHashValue;
+    sscanf(receivedHash, "%02x", &receivedHashValue);
+
+    if (hash == receivedHashValue) {
+        printf("Hash verification successful. Message is unchanged.\n");
+    } else {
+        printf("Hash verification failed. Message has been altered.\n");
+    }
+
+    return 0;
+}
+```
 
 
 ## Output:
+<img width="1621" height="895" alt="image" src="https://github.com/user-attachments/assets/8ad33617-3601-44e5-85c6-f8c2a4a9dd02" />
+
 
 ## Result:
 The program is executed successfully.
